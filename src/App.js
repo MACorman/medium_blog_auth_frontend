@@ -18,7 +18,10 @@ class App extends React.Component {
       body: JSON.stringify({ user })
     })
     .then(resp => resp.json())
-    .then(user => this.getProfile(user))
+    .then(user => {
+      this.setState({currentUser: user})
+      this.getProfile(user)
+      })
 
   }
 
@@ -33,6 +36,7 @@ class App extends React.Component {
     })
     .then(resp => resp.json())
     .then(user => {
+      this.setState({currentUser: user})
       this.getProfile(user)
     })
   }
@@ -45,13 +49,14 @@ class App extends React.Component {
       }
     })
     .then(resp => resp.json())
-    .then(user => this.setState({currentUser: user.user}))
+    .then(console.log)
   }
 
   render() {
+    console.log(this.state.currentUser)
     return (
       <div>
-        {this.state.currentUser.id ? <Profile currentUser={this.state.currentUser} /> : <LoginSignUp login={this.login} createUser={this.createUser}/>}
+        {this.state.currentUser.user ? <Profile currentUser={this.state.currentUser} /> : <LoginSignUp login={this.login} createUser={this.createUser}/>}
       </div>
     );
   }
