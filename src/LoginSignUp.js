@@ -19,6 +19,12 @@ class LoginSignUp extends React.Component {
             avatar: this.state.avatar
         }
         this.props.createUser(user)
+        this.setState({
+            username: '',
+            password: '',
+            bio: '',
+            avatar: ''
+        })
     }
 
     loginHandler = (event) => {
@@ -28,6 +34,12 @@ class LoginSignUp extends React.Component {
             password: this.state.password
         }
         this.props.login(user)
+        this.setState({
+            username: '',
+            password: '',
+            bio: '',
+            avatar: ''
+        })
     }
 
     render() {

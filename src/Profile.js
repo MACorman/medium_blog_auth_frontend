@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Profile(props) {
-    let { username, avatar, bio } = props.currentUser.user
+    let { username, avatar, bio } = props.currentUser
     return(
         <>
             <h3>{username}</h3>
